@@ -1,0 +1,14 @@
+{
+    "name": "webkonstruktor/collections",
+    "description": "PHP7 data strucures library",
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Kamil Głusiński",
+            "email": "kontakt@webkonstruktor.pl"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
