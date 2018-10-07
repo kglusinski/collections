@@ -1,6 +1,6 @@
 {
     "name": "webkonstruktor/collections",
-    "description": "PHP7 data strucures library",
+    "description": "PHP7 data structures library",
     "type": "library",
     "license": "GPL-3.0-or-later",
     "authors": [
