@@ -13,8 +13,8 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Webkonstruktor\\": "/src",
-            "Webkonstruktor\\Test\\": "/tests"
+            "Webkonstruktor\\Collection\\": "/src",
+            "Webkonstruktor\\Collection\\Test\\": "/tests"
         }
     }
 }
