@@ -39,7 +39,7 @@ class Stack
         return $element;
     }
 
-    public function clear()
+    public function clear(): void
     {
         while (!$this->isEmpty()) {
             $this->pop();
