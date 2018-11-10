@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Webkonstruktor\Collection;
 
 
+use Webkonstruktor\Collection\Exception\EmptyCollectionException;
+
 class Stack
 {
     private $items = [];
@@ -25,6 +27,10 @@ class Stack
 
     public function pop()
     {
+        if ($this->isEmpty()) {
+            throw new EmptyCollectionException(self::class);
+        }
+
         $size = $this->count();
 
         $element = $this->items[$size-1];

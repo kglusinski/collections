@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Webkonstruktor\Collection\Test;
 
 use PHPUnit\Framework\TestCase;
+use Webkonstruktor\Collection\Exception\EmptyCollectionException;
 use Webkonstruktor\Collection\Stack;
 
 class StackTest extends TestCase
@@ -56,5 +57,13 @@ class StackTest extends TestCase
         $this->assertSame($dummyLastItem, $actual);
         $newSize = $stackUnderTest->count();
         $this->assertSame(1, $newSize);
+    }
+
+    public function testItShouldThrowExceptionOnGettingItemFromEmptyStack()
+    {
+        $this->expectException(EmptyCollectionException::class);
+        $stackUnderTest = new Stack();
+
+        $stackUnderTest->pop();
     }
 }
