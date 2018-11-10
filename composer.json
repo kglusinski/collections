@@ -15,12 +15,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Webkonstruktor\\Collection\\": "/src"
+            "Webkonstruktor\\Collection\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Webkonstruktor\\Collection\\Test\\": "/tests"
+            "Webkonstruktor\\Collection\\Test\\": "tests"
         }
     },
     "require-dev": {
