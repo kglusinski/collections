@@ -10,10 +10,16 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "php": "7.2"
+    },
     "autoload": {
         "psr-4": {
-            "Webkonstruktor\\Collection\\": "/src",
+            "Webkonstruktor\\Collection\\": "/src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "Webkonstruktor\\Collection\\Test\\": "/tests"
         }
     },
