@@ -22,4 +22,14 @@ class Stack
     {
         return count($this->items);
     }
+
+    public function pop()
+    {
+        $size = $this->count();
+
+        $element = $this->items[$size-1];
+        unset($this->items[$size-1]);
+
+        return $element;
+    }
 }
