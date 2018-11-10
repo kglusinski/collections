@@ -6,8 +6,15 @@ namespace Webkonstruktor\Collection;
 
 class Stack
 {
-    public function isEmpty()
+    private $items = [];
+
+    public function isEmpty(): bool
     {
-        return true;
+        return empty($this->items);
+    }
+
+    public function add($item): void
+    {
+        $this->items[] = $item;
     }
 }
