@@ -23,7 +23,7 @@ class StackTest extends TestCase
         $stackUnderTest = new Stack();
         $dummyItem = 231;
 
-        $stackUnderTest->add($dummyItem);
+        $stackUnderTest->push($dummyItem);
         $actual = $stackUnderTest->isEmpty();
 
         $this->assertFalse($actual);
@@ -34,7 +34,7 @@ class StackTest extends TestCase
         $stackUnderTest = new Stack();
         $dummyItem = 231;
 
-        $stackUnderTest->add($dummyItem);
+        $stackUnderTest->push($dummyItem);
         $actual = $stackUnderTest->count();
 
         $this->assertSame(1, $actual);
@@ -46,8 +46,8 @@ class StackTest extends TestCase
         $dummyItem = 231;
         $dummyLastItem = 321;
 
-        $stackUnderTest->add($dummyItem);
-        $stackUnderTest->add($dummyLastItem);
+        $stackUnderTest->push($dummyItem);
+        $stackUnderTest->push($dummyLastItem);
         $size = $stackUnderTest->count();
 
         $this->assertSame(2, $size);
@@ -72,7 +72,7 @@ class StackTest extends TestCase
         $stackUnderTest = new Stack();
         $dummyItem = 1;
 
-        $stackUnderTest->add($dummyItem);
+        $stackUnderTest->push($dummyItem);
         $stackUnderTest->clear();
 
         $actual = $stackUnderTest->isEmpty();

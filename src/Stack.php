@@ -15,7 +15,7 @@ class Stack
         return empty($this->items);
     }
 
-    public function add($item): void
+    public function push($item): void
     {
         $this->items[] = $item;
     }
