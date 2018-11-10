@@ -38,4 +38,11 @@ class Stack
 
         return $element;
     }
+
+    public function clear()
+    {
+        while (!$this->isEmpty()) {
+            $this->pop();
+        }
+    }
 }

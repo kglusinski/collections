@@ -66,4 +66,17 @@ class StackTest extends TestCase
 
         $stackUnderTest->pop();
     }
+
+    public function testItShouldCanBeCleared()
+    {
+        $stackUnderTest = new Stack();
+        $dummyItem = 1;
+
+        $stackUnderTest->add($dummyItem);
+        $stackUnderTest->clear();
+
+        $actual = $stackUnderTest->isEmpty();
+
+        $this->assertTrue($actual);
+    }
 }
