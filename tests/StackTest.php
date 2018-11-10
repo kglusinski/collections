@@ -27,4 +27,15 @@ class StackTest extends TestCase
 
         $this->assertFalse($actual);
     }
+
+    public function testItShouldAllowToCountItems()
+    {
+        $stackUnderTest = new Stack();
+        $dummyItem = 231;
+
+        $stackUnderTest->add($dummyItem);
+        $actual = $stackUnderTest->count();
+
+        $this->assertSame(1, $actual);
+    }
 }

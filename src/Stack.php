@@ -17,4 +17,9 @@ class Stack
     {
         $this->items[] = $item;
     }
+
+    public function count(): int
+    {
+        return count($this->items);
+    }
 }
