@@ -6,7 +6,7 @@ namespace Webkonstruktor\Collection;
 
 use Webkonstruktor\Collection\Exception\EmptyCollectionException;
 
-class Stack
+class Stack implements Collection
 {
     private $items = [];
 

@@ -6,7 +6,7 @@ namespace Webkonstruktor\Collection;
 
 use Webkonstruktor\Collection\Exception\EmptyCollectionException;
 
-class Queue
+class Queue implements Collection
 {
     private $elements = [];
 

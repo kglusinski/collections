@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Webkonstruktor\Collection;
 
 
-class Set
+class Set implements Collection
 {
     private $elements = [];
 
@@ -30,7 +30,7 @@ class Set
         return in_array($element, $this->elements, true);
     }
 
-    public function clear()
+    public function clear(): void
     {
         $this->elements = [];
     }
