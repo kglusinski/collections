@@ -8,21 +8,13 @@ use Webkonstruktor\Collection\Exception\InvalidElementTypeException;
 
 class TypedQueue extends Queue
 {
-    const TYPE_INT = 'integer';
-    const TYPE_BOOL = 'boolean';
-    const TYPE_FLOAT = 'double';
-    const TYPE_STRING = 'string';
-    const TYPE_ARRAY = 'array';
-    const TYPE_OBJECT = 'object';
-    const TYPE_RESOURCE = 'resource';
-
     /** @var string */
     private $type;
 
-    /** @var TypeValidator */
+    /** @var DefaultTypeValidator */
     private $validator;
 
-    public function __construct(string $type, TypeValidator $validator)
+    public function __construct(string $type, DefaultTypeValidator $validator)
     {
         $this->type = $type;
         $this->validator = $validator;

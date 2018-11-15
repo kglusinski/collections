@@ -4,18 +4,15 @@ declare(strict_types=1);
 namespace Webkonstruktor\Collection;
 
 
-class TypeValidator
+interface TypeValidator
 {
-    public function validate($item, string $type): bool
-    {
-        if (gettype($item) === $type) {
-            return true;
-        }
+    const TYPE_INT = 'integer';
+    const TYPE_BOOL = 'boolean';
+    const TYPE_FLOAT = 'double';
+    const TYPE_STRING = 'string';
+    const TYPE_ARRAY = 'array';
+    const TYPE_OBJECT = 'object';
+    const TYPE_RESOURCE = 'resource';
 
-        if (is_object($item) && get_class($item) === $type) {
-            return true;
-        }
-
-        return false;
-    }
+    public function validate($item, string $type): bool;
 }

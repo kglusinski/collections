@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Webkonstruktor\Collection\Exception\InvalidElementTypeException;
 use Webkonstruktor\Collection\Queue;
 use Webkonstruktor\Collection\TypedQueue;
+use Webkonstruktor\Collection\DefaultTypeValidator;
 use Webkonstruktor\Collection\TypeValidator;
 
 class TypedQueueTest extends TestCase
@@ -18,9 +19,9 @@ class TypedQueueTest extends TestCase
 
     public function setUp()
     {
-        /** @var TypeValidator|MockObject $validator */
-        $this->validator = new TypeValidator();
-        $this->queueUnderTest = new TypedQueue(TypedQueue::TYPE_INT, $this->validator);
+        /** @var DefaultTypeValidator|MockObject $validator */
+        $this->validator = new DefaultTypeValidator();
+        $this->queueUnderTest = new TypedQueue(TypeValidator::TYPE_INT, $this->validator);
     }
 
     public function testItShouldAllowToCreateEmptyTypedQueue()
