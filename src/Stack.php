@@ -45,4 +45,11 @@ class Stack implements Collection
             $this->pop();
         }
     }
+
+    public function jsonSerialize()
+    {
+        return $this->items;
+    }
+
+
 }

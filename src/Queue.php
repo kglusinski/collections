@@ -44,4 +44,11 @@ class Queue implements Collection
             $this->pop();
         }
     }
+
+    public function jsonSerialize()
+    {
+        return $this->elements;
+    }
+
+
 }

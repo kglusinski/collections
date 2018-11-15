@@ -35,5 +35,10 @@ class Set implements Collection
         $this->elements = [];
     }
 
+    public function jsonSerialize()
+    {
+        return $this->elements;
+    }
+
     //todo implement iterator
 }
