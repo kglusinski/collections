@@ -6,7 +6,7 @@ namespace Webkonstruktor\Collection;
 
 class Set implements Collection
 {
-    private $elements = [];
+    protected $elements = [];
 
     public function isEmpty(): bool
     {
