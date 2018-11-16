@@ -3,12 +3,20 @@ declare(strict_types=1);
 
 namespace Webkonstruktor\Collection;
 
-
 use Webkonstruktor\Collection\Exception\EmptyCollectionException;
 
 class Queue implements Collection
 {
     private $elements = [];
+
+    /** @var CollectionIterator */
+    private $iterator;
+
+    public function __construct(CollectionIterator $iterator)
+    {
+        $this->iterator = $iterator;
+        $this->iterator->setElements($this->elements);
+    }
 
     public function isEmpty(): bool
     {
@@ -48,6 +56,11 @@ class Queue implements Collection
     public function jsonSerialize()
     {
         return $this->elements;
+    }
+
+    public function getIterator()
+    {
+        return $this->iterator;
     }
 
 
