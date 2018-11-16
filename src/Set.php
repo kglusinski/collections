@@ -3,10 +3,18 @@ declare(strict_types=1);
 
 namespace Webkonstruktor\Collection;
 
-
 class Set implements Collection
 {
     protected $elements = [];
+
+    /** @var CollectionIterator */
+    private $iterator;
+
+    public function __construct(CollectionIterator $iterator)
+    {
+        $this->iterator = $iterator;
+        $this->iterator->setElements($this->elements);
+    }
 
     public function isEmpty(): bool
     {
@@ -40,5 +48,11 @@ class Set implements Collection
         return $this->elements;
     }
 
-    //todo implement iterator
+    /**
+     * @inheritdoc
+     */
+    public function getIterator()
+    {
+        return $this->iterator;
+    }
 }
