@@ -4,78 +4,80 @@ declare(strict_types=1);
 namespace Webkonstruktor\Collection\Test;
 
 use PHPUnit\Framework\TestCase;
+use Webkonstruktor\Collection\DefaultCollectionIterator;
 use Webkonstruktor\Collection\Exception\EmptyCollectionException;
 use Webkonstruktor\Collection\Stack;
 
 class StackTest extends TestCase
 {
+    /** @var Stack */
+    private $stackUnderTest;
+
+    public function setUp()
+    {
+        $iterator = new DefaultCollectionIterator();
+        $this->stackUnderTest = new Stack($iterator);
+    }
+
     public function testItCanAllowCreateEmptyStack()
     {
-        $stackUnderTest = new Stack();
-
-        $actual = $stackUnderTest->isEmpty();
+        $actual = $this->stackUnderTest->isEmpty();
 
         $this->assertTrue($actual);
     }
 
     public function testItShouldAllowToAddNewItem()
     {
-        $stackUnderTest = new Stack();
         $dummyItem = 231;
 
-        $stackUnderTest->push($dummyItem);
-        $actual = $stackUnderTest->isEmpty();
+        $this->stackUnderTest->push($dummyItem);
+        $actual = $this->stackUnderTest->isEmpty();
 
         $this->assertFalse($actual);
     }
 
     public function testItShouldAllowToCountItems()
     {
-        $stackUnderTest = new Stack();
         $dummyItem = 231;
 
-        $stackUnderTest->push($dummyItem);
-        $actual = $stackUnderTest->count();
+        $this->stackUnderTest->push($dummyItem);
+        $actual = $this->stackUnderTest->count();
 
         $this->assertSame(1, $actual);
     }
 
     public function testItShouldAllowToPopLastAddedItemAndDecreaseItems()
     {
-        $stackUnderTest = new Stack();
         $dummyItem = 231;
         $dummyLastItem = 321;
 
-        $stackUnderTest->push($dummyItem);
-        $stackUnderTest->push($dummyLastItem);
-        $size = $stackUnderTest->count();
+        $this->stackUnderTest->push($dummyItem);
+        $this->stackUnderTest->push($dummyLastItem);
+        $size = $this->stackUnderTest->count();
 
         $this->assertSame(2, $size);
 
-        $actual = $stackUnderTest->pop();
+        $actual = $this->stackUnderTest->pop();
 
         $this->assertSame($dummyLastItem, $actual);
-        $newSize = $stackUnderTest->count();
+        $newSize = $this->stackUnderTest->count();
         $this->assertSame(1, $newSize);
     }
 
     public function testItShouldThrowExceptionOnGettingItemFromEmptyStack()
     {
         $this->expectException(EmptyCollectionException::class);
-        $stackUnderTest = new Stack();
-
-        $stackUnderTest->pop();
+        $this->stackUnderTest->pop();
     }
 
     public function testItShouldCanBeCleared()
     {
-        $stackUnderTest = new Stack();
         $dummyItem = 1;
 
-        $stackUnderTest->push($dummyItem);
-        $stackUnderTest->clear();
+        $this->stackUnderTest->push($dummyItem);
+        $this->stackUnderTest->clear();
 
-        $actual = $stackUnderTest->isEmpty();
+        $actual = $this->stackUnderTest->isEmpty();
 
         $this->assertTrue($actual);
     }

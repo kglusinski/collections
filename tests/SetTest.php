@@ -5,53 +5,58 @@ namespace Webkonstruktor\Collection\Test;
 
 
 use PHPUnit\Framework\TestCase;
+use Webkonstruktor\Collection\DefaultCollectionIterator;
 use Webkonstruktor\Collection\Set;
 
 class SetTest extends TestCase
 {
+    /** @var Set */
+    private $setUnderTest;
+
+    public function setUp()
+    {
+        $iterator = new DefaultCollectionIterator();
+        $this->setUnderTest = new Set($iterator);
+    }
+
     public function testItShouldAllowToCreateEmptySet()
     {
-        $setUnderTest = new Set();
-
-        $actual = $setUnderTest->isEmpty();
+        $actual = $this->setUnderTest->isEmpty();
 
         $this->assertTrue($actual);
     }
 
     public function testItShouldAllowToPushNewItem()
     {
-        $setUnderTest = new Set();
         $dummyItem = 1;
 
-        $setUnderTest->push($dummyItem);
-        $actual = $setUnderTest->isEmpty();
+        $this->setUnderTest->push($dummyItem);
+        $actual = $this->setUnderTest->isEmpty();
         $this->assertFalse($actual);
     }
 
     public function testItShouldContainsUniqueItems()
     {
-        $setUnderTest = new Set();
         $dummyItem = 1;
         $duplicatedDummyItem = 1;
 
-        $setUnderTest->push($dummyItem);
-        $setUnderTest->push($duplicatedDummyItem);
+        $this->setUnderTest->push($dummyItem);
+        $this->setUnderTest->push($duplicatedDummyItem);
 
-        $empty = $setUnderTest->isEmpty();
+        $empty = $this->setUnderTest->isEmpty();
         $this->assertFalse($empty);
 
-        $count = $setUnderTest->count();
+        $count = $this->setUnderTest->count();
         $this->assertSame(1, $count);
     }
 
     public function testItShouldAllowToCheckIfContainsItem()
     {
-        $setUnderTest = new Set();
         $dummyItem = 1;
 
-        $setUnderTest->push($dummyItem);
-        $ifContain = $setUnderTest->contain($dummyItem);
-        $ifNotContain = $setUnderTest->contain(0);
+        $this->setUnderTest->push($dummyItem);
+        $ifContain = $this->setUnderTest->contain($dummyItem);
+        $ifNotContain = $this->setUnderTest->contain(0);
 
         $this->assertTrue($ifContain);
         $this->assertFalse($ifNotContain);
@@ -59,13 +64,12 @@ class SetTest extends TestCase
 
     public function testItShouldAllowToClearSet()
     {
-        $setUnderTest = new Set();
         $dummyItem = 1;
 
-        $setUnderTest->push($dummyItem);
-        $setUnderTest->clear();
+        $this->setUnderTest->push($dummyItem);
+        $this->setUnderTest->clear();
 
-        $actual = $setUnderTest->isEmpty();
+        $actual = $this->setUnderTest->isEmpty();
 
         $this->assertTrue($actual);
     }

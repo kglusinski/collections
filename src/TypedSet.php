@@ -14,10 +14,12 @@ class TypedSet extends Set
     /** @var DefaultTypeValidator */
     private $validator;
 
-    public function __construct(string $type, DefaultTypeValidator $validator)
+    public function __construct(string $type, DefaultTypeValidator $validator, CollectionIterator $iterator)
     {
         $this->type = $type;
         $this->validator = $validator;
+
+        parent::__construct($iterator);
     }
 
     public function push($item): void

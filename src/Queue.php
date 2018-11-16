@@ -5,32 +5,11 @@ namespace Webkonstruktor\Collection;
 
 use Webkonstruktor\Collection\Exception\EmptyCollectionException;
 
-class Queue implements Collection
+class Queue extends AbstractCollection
 {
-    private $elements = [];
-
-    /** @var CollectionIterator */
-    private $iterator;
-
-    public function __construct(CollectionIterator $iterator)
-    {
-        $this->iterator = $iterator;
-        $this->iterator->setElements($this->elements);
-    }
-
-    public function isEmpty(): bool
-    {
-        return empty($this->elements);
-    }
-
     public function push($item): void
     {
         $this->elements[] = $item;
-    }
-
-    public function count(): int
-    {
-        return count($this->elements);
     }
 
     public function pop()
@@ -52,16 +31,4 @@ class Queue implements Collection
             $this->pop();
         }
     }
-
-    public function jsonSerialize()
-    {
-        return $this->elements;
-    }
-
-    public function getIterator()
-    {
-        return $this->iterator;
-    }
-
-
 }

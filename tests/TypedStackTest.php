@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Webkonstruktor\Collection\Test;
 
-
 use PHPUnit\Framework\TestCase;
+use Webkonstruktor\Collection\DefaultCollectionIterator;
 use Webkonstruktor\Collection\DefaultTypeValidator;
 use Webkonstruktor\Collection\Exception\InvalidElementTypeException;
 use Webkonstruktor\Collection\Queue;
@@ -16,11 +16,13 @@ class TypedStackTest extends TestCase
     /** @var TypedStack */
     private $stackUnderTest;
     private $validator;
+    private $iterator;
 
     public function setUp()
     {
         $this->validator = new DefaultTypeValidator();
-        $this->stackUnderTest = new TypedStack(TypeValidator::TYPE_INT, $this->validator);
+        $this->iterator = new DefaultCollectionIterator();
+        $this->stackUnderTest = new TypedStack(TypeValidator::TYPE_INT, $this->validator, $this->iterator);
     }
 
     public function testItShouldAllowToCreateEmptyStack()
@@ -46,8 +48,8 @@ class TypedStackTest extends TestCase
 
     public function testItShouldAllowAddClassTypeElements()
     {
-        $stackUnderTest = new TypedStack(Queue::class, $this->validator);
-        $classCorrectTypeItem = new Queue();
+        $stackUnderTest = new TypedStack(Queue::class, $this->validator, $this->iterator);
+        $classCorrectTypeItem = new Queue($this->iterator);
 
         $stackUnderTest->push($classCorrectTypeItem);
 

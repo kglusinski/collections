@@ -3,27 +3,15 @@ declare(strict_types=1);
 
 namespace Webkonstruktor\Collection;
 
-
 use Webkonstruktor\Collection\Exception\EmptyCollectionException;
 
-class Stack implements Collection
+class Stack extends AbstractCollection
 {
-    private $items = [];
-
-    public function isEmpty(): bool
-    {
-        return empty($this->items);
-    }
-
     public function push($item): void
     {
-        $this->items[] = $item;
+        $this->elements[] = $item;
     }
 
-    public function count(): int
-    {
-        return count($this->items);
-    }
 
     public function pop()
     {
@@ -33,8 +21,8 @@ class Stack implements Collection
 
         $size = $this->count();
 
-        $element = $this->items[$size-1];
-        unset($this->items[$size-1]);
+        $element = $this->elements[$size-1];
+        unset($this->elements[$size-1]);
 
         return $element;
     }
@@ -45,11 +33,4 @@ class Stack implements Collection
             $this->pop();
         }
     }
-
-    public function jsonSerialize()
-    {
-        return $this->items;
-    }
-
-
 }

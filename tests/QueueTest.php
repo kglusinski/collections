@@ -5,53 +5,59 @@ namespace Webkonstruktor\Collection\Test;
 
 
 use PHPUnit\Framework\TestCase;
+use Webkonstruktor\Collection\DefaultCollectionIterator;
+use Webkonstruktor\Collection\DefaultTypeValidator;
 use Webkonstruktor\Collection\Exception\EmptyCollectionException;
 use Webkonstruktor\Collection\Queue;
 
 class QueueTest extends TestCase
 {
+    private $queueUnderTest;
+
+    public function setUp()
+    {
+        $iterator = new DefaultCollectionIterator();
+        $this->queueUnderTest = new Queue($iterator);
+    }
+
     public function testItCanAllowCreateEmptyQueue()
     {
-        $queueUnderTest = new Queue();
-
-        $actual = $queueUnderTest->isEmpty();
+        $actual = $this->queueUnderTest->isEmpty();
 
         $this->assertTrue($actual);
     }
 
     public function testItShouldAllowToAddNewItem()
     {
-        $queueUnderTest = new Queue();
         $dummyItem = 1;
 
-        $queueUnderTest->push($dummyItem);
+        $this->queueUnderTest->push($dummyItem);
 
-        $empty = $queueUnderTest->isEmpty();
+        $empty = $this->queueUnderTest->isEmpty();
         $this->assertFalse($empty);
 
-        $count = $queueUnderTest->count();
+        $count = $this->queueUnderTest->count();
         $this->assertSame(1, $count);
     }
 
     public function testItShouldAllowToGetFirstItem()
     {
-        $queueUnderTest = new Queue();
         $dummyItemFirst = 1;
         $dummyItemSecond = 2;
 
-        $queueUnderTest->push($dummyItemFirst);
-        $queueUnderTest->push($dummyItemSecond);
+        $this->queueUnderTest->push($dummyItemFirst);
+        $this->queueUnderTest->push($dummyItemSecond);
 
-        $empty = $queueUnderTest->isEmpty();
+        $empty = $this->queueUnderTest->isEmpty();
         $this->assertFalse($empty);
 
-        $count = $queueUnderTest->count();
+        $count = $this->queueUnderTest->count();
         $this->assertSame(2, $count);
 
-        $actual = $queueUnderTest->pop();
+        $actual = $this->queueUnderTest->pop();
         $this->assertSame($dummyItemFirst, $actual);
 
-        $count = $queueUnderTest->count();
+        $count = $this->queueUnderTest->count();
         $this->assertSame(1, $count);
     }
 
@@ -59,22 +65,20 @@ class QueueTest extends TestCase
     {
         $this->expectException(EmptyCollectionException::class);
 
-        $queueUnderTest = new Queue();
-        $actual = $queueUnderTest->pop();
+        $actual = $this->queueUnderTest->pop();
     }
 
     public function testItShouldCanBeCleared()
     {
-        $queueUnderTest = new Queue();
         $dummyItemFirst = 1;
         $dummyItemSecond = 2;
 
-        $queueUnderTest->push($dummyItemFirst);
-        $queueUnderTest->push($dummyItemSecond);
+        $this->queueUnderTest->push($dummyItemFirst);
+        $this->queueUnderTest->push($dummyItemSecond);
 
-        $queueUnderTest->clear();
+        $this->queueUnderTest->clear();
 
-        $actual = $queueUnderTest->isEmpty();
+        $actual = $this->queueUnderTest->isEmpty();
 
         $this->assertTrue($actual);
     }

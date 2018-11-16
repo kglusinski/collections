@@ -11,10 +11,12 @@ class TypedStack extends Stack
     private $validator;
     private $type;
 
-    public function __construct(string $type, TypeValidator $validator)
+    public function __construct(string $type, DefaultTypeValidator $validator, CollectionIterator $iterator)
     {
         $this->type = $type;
         $this->validator = $validator;
+
+        parent::__construct($iterator);
     }
 
     public function push($item): void
