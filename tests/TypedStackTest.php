@@ -4,18 +4,23 @@ declare(strict_types=1);
 namespace Webkonstruktor\Collection\Test;
 
 use PHPUnit\Framework\TestCase;
+use Webkonstruktor\Collection\CollectionIterator;
 use Webkonstruktor\Collection\DefaultCollectionIterator;
-use Webkonstruktor\Collection\DefaultTypeValidator;
 use Webkonstruktor\Collection\Exception\InvalidElementTypeException;
 use Webkonstruktor\Collection\Queue;
 use Webkonstruktor\Collection\TypedStack;
-use Webkonstruktor\Collection\TypeValidator;
+use Webkonstruktor\Collection\Validator\TypeValidator;
+use Webkonstruktor\Collection\Validator\DefaultTypeValidator;
 
 class TypedStackTest extends TestCase
 {
     /** @var TypedStack */
     private $stackUnderTest;
+
+    /** @var TypeValidator */
     private $validator;
+
+    /** @var CollectionIterator */
     private $iterator;
 
     public function setUp()

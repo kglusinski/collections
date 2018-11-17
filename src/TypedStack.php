@@ -5,13 +5,17 @@ namespace Webkonstruktor\Collection;
 
 
 use Webkonstruktor\Collection\Exception\InvalidElementTypeException;
+use Webkonstruktor\Collection\Validator\TypeValidator;
 
 class TypedStack extends Stack
 {
-    private $validator;
+    /** @var string */
     private $type;
 
-    public function __construct(string $type, DefaultTypeValidator $validator, CollectionIterator $iterator)
+    /** @var TypeValidator */
+    private $validator;
+
+    public function __construct(string $type, TypeValidator $validator, CollectionIterator $iterator)
     {
         $this->type = $type;
         $this->validator = $validator;

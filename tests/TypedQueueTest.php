@@ -3,25 +3,28 @@ declare(strict_types=1);
 
 namespace Webkonstruktor\Collection\Test;
 
-
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Webkonstruktor\Collection\CollectionIterator;
 use Webkonstruktor\Collection\DefaultCollectionIterator;
 use Webkonstruktor\Collection\Exception\InvalidElementTypeException;
 use Webkonstruktor\Collection\Queue;
 use Webkonstruktor\Collection\TypedQueue;
-use Webkonstruktor\Collection\DefaultTypeValidator;
-use Webkonstruktor\Collection\TypeValidator;
+use Webkonstruktor\Collection\Validator\DefaultTypeValidator;
+use Webkonstruktor\Collection\Validator\TypeValidator;
 
 class TypedQueueTest extends TestCase
 {
+    /** @var TypedQueue */
     private $queueUnderTest;
+
+    /** @var TypeValidator $validator */
     private $validator;
+
+    /** @var CollectionIterator */
     private $iterator;
 
     public function setUp()
     {
-        /** @var DefaultTypeValidator|MockObject $validator */
         $this->validator = new DefaultTypeValidator();
         $this->iterator = new DefaultCollectionIterator();
         $this->queueUnderTest = new TypedQueue(TypeValidator::TYPE_INT, $this->validator, $this->iterator);

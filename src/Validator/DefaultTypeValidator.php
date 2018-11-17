@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Webkonstruktor\Collection;
+namespace Webkonstruktor\Collection\Validator;
 
 class DefaultTypeValidator implements TypeValidator
 {
