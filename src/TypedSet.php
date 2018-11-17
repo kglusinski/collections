@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Webkonstruktor\Collection;
 
 use Webkonstruktor\Collection\Exception\InvalidElementTypeException;
+use Webkonstruktor\Collection\Iterator\CollectionIterator;
 use Webkonstruktor\Collection\Validator\TypeValidator;
 
 class TypedSet extends Set

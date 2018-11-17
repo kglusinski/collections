@@ -3,9 +3,8 @@ declare(strict_types=1);
 
 namespace Webkonstruktor\Collection\Test;
 
-
 use PHPUnit\Framework\TestCase;
-use Webkonstruktor\Collection\DefaultCollectionIterator;
+use Webkonstruktor\Collection\Iterator\DefaultCollectionIterator;
 use Webkonstruktor\Collection\Set;
 
 class SetTest extends TestCase

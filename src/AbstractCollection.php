@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Webkonstruktor\Collection;
 
+use Webkonstruktor\Collection\Iterator\CollectionIterator;
+
 abstract class AbstractCollection implements Collection
 {
     protected $elements = [];

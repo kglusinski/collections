@@ -5,8 +5,8 @@ namespace Webkonstruktor\Collection\Test;
 
 
 use PHPUnit\Framework\TestCase;
-use Webkonstruktor\Collection\CollectionIterator;
-use Webkonstruktor\Collection\DefaultCollectionIterator;
+use Webkonstruktor\Collection\Iterator\CollectionIterator;
+use Webkonstruktor\Collection\Iterator\DefaultCollectionIterator;
 use Webkonstruktor\Collection\Exception\InvalidElementTypeException;
 use Webkonstruktor\Collection\Queue;
 use Webkonstruktor\Collection\TypedSet;

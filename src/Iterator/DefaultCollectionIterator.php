@@ -1,8 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Webkonstruktor\Collection;
-
+namespace Webkonstruktor\Collection\Iterator;
 
 class DefaultCollectionIterator implements CollectionIterator
 {
