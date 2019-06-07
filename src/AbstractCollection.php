@@ -33,6 +33,11 @@ abstract class AbstractCollection implements Collection
         return $this->iterator;
     }
 
+    public function updateIterator(): void
+    {
+        $this->iterator->setElements($this->elements);
+    }
+
     /**
      * @inheritdoc
      */

@@ -9,6 +9,7 @@ class Set extends AbstractCollection
     {
         if (!$this->contain($element)) {
             $this->elements[] = $element;
+            $this->updateIterator();
         }
     }
 
@@ -17,8 +18,31 @@ class Set extends AbstractCollection
         return in_array($element, $this->elements, true);
     }
 
+    public function containAll($elements): bool
+    {
+        if ($elements instanceof Collection) {
+            $it = $elements->getIterator();
+            for ($it->rewind(); $it->valid(); $it->next()) {
+                $result = $this->contain($it->current());
+
+                if (!$result) return false;
+            }
+        }
+
+        if (is_array($elements)) {
+            foreach ($elements as $element) {
+                $result = $this->contain($element);
+
+                if (!$result) return false;
+            }
+        }
+
+        return true;
+    }
+
     public function clear(): void
     {
         $this->elements = [];
+        $this->updateIterator();
     }
 }

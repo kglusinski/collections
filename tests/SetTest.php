@@ -61,6 +61,20 @@ class SetTest extends TestCase
         $this->assertFalse($ifNotContain);
     }
 
+    /** @dataProvider setProvider */
+    public function testItShouldAllowToCheckIfContainsAllItems($testItems, $valid)
+    {
+        $items = [1, 2, 3];
+
+        foreach ($items as $item) {
+            $this->setUnderTest->push($item);
+        }
+
+        $result = $this->setUnderTest->containAll($testItems);
+
+        $this->assertSame($valid, $result);
+    }
+
     public function testItShouldAllowToClearSet()
     {
         $dummyItem = 1;
@@ -71,5 +85,40 @@ class SetTest extends TestCase
         $actual = $this->setUnderTest->isEmpty();
 
         $this->assertTrue($actual);
+    }
+
+    public function setProvider(): array
+    {
+        $iterator1 = new DefaultCollectionIterator();
+        $collectionContents = new Set($iterator1);
+        $collectionContents->push(1);
+        $collectionContents->push(2);
+        $collectionContents->push(3);
+
+        $iterator2 = new DefaultCollectionIterator();
+        $collectionNotContents = new Set($iterator2);
+        $collectionNotContents->push(1);
+        $collectionNotContents->push(2);
+        $collectionNotContents->push(3);
+        $collectionNotContents->push(4);
+
+        return [
+            'validArray' => [
+                'items' => [1, 2, 3],
+                'result' => true
+            ],
+           'invalidArray' => [
+                'items' => [1, 2, 3, 4],
+                'result' => false
+            ],
+            'validCollection' => [
+                'items' => $collectionContents,
+                'result' => true
+            ],
+            'invalidCollection' => [
+                'items' => $collectionNotContents,
+                'result' => false
+            ]
+        ];
     }
 }
