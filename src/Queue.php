@@ -10,6 +10,7 @@ class Queue extends AbstractCollection
     public function push($item): void
     {
         $this->elements[] = $item;
+        $this->iterator->setElements($this->elements);
     }
 
     public function pop()
@@ -21,6 +22,7 @@ class Queue extends AbstractCollection
         $element = $this->elements[0];
         unset($this->elements[0]);
         $this->elements = array_values($this->elements);
+        $this->iterator->setElements($this->elements);
 
         return $element;
     }
@@ -29,6 +31,13 @@ class Queue extends AbstractCollection
     {
         while (!$this->isEmpty()) {
             $this->pop();
+        }
+    }
+
+    public function fromArray(array $items)
+    {
+        foreach ($items as $item) {
+            $this->push($item);
         }
     }
 }

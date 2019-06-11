@@ -10,8 +10,8 @@ class Stack extends AbstractCollection
     public function push($item): void
     {
         $this->elements[] = $item;
+        $this->iterator->setElements($this->elements);
     }
-
 
     public function pop()
     {
@@ -31,6 +31,13 @@ class Stack extends AbstractCollection
     {
         while (!$this->isEmpty()) {
             $this->pop();
+        }
+    }
+
+    public function fromArray(array $items)
+    {
+        foreach ($items as $item) {
+            $this->push($item);
         }
     }
 }

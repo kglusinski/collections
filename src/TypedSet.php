@@ -31,4 +31,11 @@ class TypedSet extends Set
 
         parent::push($item);
     }
+
+    public function fromArray(array $items)
+    {
+        foreach ($items as $item) {
+            $this->push($item);
+        }
+    }
 }

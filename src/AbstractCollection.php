@@ -53,4 +53,6 @@ abstract class AbstractCollection implements Collection
     {
         return $this->elements;
     }
+
+    public abstract function fromArray(array $items);
 }

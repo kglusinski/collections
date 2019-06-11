@@ -31,4 +31,11 @@ class TypedQueue extends Queue
 
         parent::push($item);
     }
+
+    public function fromArray(array $items)
+    {
+        foreach ($items as $item) {
+            $this->push($item);
+        }
+    }
 }

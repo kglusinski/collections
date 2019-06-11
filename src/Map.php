@@ -26,4 +26,11 @@ class Map extends AbstractCollection
     {
         $this->elements = [];
     }
+
+    public function fromArray(array $items)
+    {
+        foreach ($items as $index => $item) {
+            $this->put($index, $item);
+        }
+    }
 }

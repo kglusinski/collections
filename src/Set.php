@@ -45,4 +45,11 @@ class Set extends AbstractCollection
         $this->elements = [];
         $this->updateIterator();
     }
+
+    public function fromArray(array $items)
+    {
+        foreach ($items as $item) {
+            $this->push($items);
+        }
+    }
 }
