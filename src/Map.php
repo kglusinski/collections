@@ -11,6 +11,7 @@ class Map extends AbstractCollection
     public function put(string $key, $value): void
     {
         $this->elements[$key] = $value;
+        $this->iterator->setElements($this->elements);
     }
 
     public function get(string $key)
@@ -25,6 +26,7 @@ class Map extends AbstractCollection
     public function clear(): void
     {
         $this->elements = [];
+        $this->iterator->setElements($this->elements);
     }
 
     public function fromArray(array $items)
